@@ -66,7 +66,7 @@ export async function createWebResourcesAsync(sourcepath: string, publisher: str
                 path: file,
                 content: content,
             } as Webresource
-            wr.type = getFileType(wr.name);
+            wr.webresourcetype = getFileType(wr.name);
             return wr;
         }).toArray();
 

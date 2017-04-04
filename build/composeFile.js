@@ -73,7 +73,7 @@ function createWebResourcesAsync(sourcepath, publisher) {
                     path: file,
                     content: content,
                 };
-                wr.type = getFileType(wr.name);
+                wr.webresourcetype = getFileType(wr.name);
                 return wr;
             }).toArray();
             resolve(resources);
