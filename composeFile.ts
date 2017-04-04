@@ -42,6 +42,19 @@ function getFileType(filename: string): FileType {
     else return FileType.unknown
 }
 
+export function createSingleWebResource(filename: string, sourcepath: string, publisher): Webresource {
+    if (!isValidFile(filename)) return null;
+
+    var content = fs.readFileSync(filename, 'base64');
+    var wr = {
+        name: `${publisher}${filename.split(sourcepath)[1]}`.split('\\').join('/'),
+        path: filename,
+        content: content,        
+    } as Webresource
+    wr.webresourcetype = getFileType(wr.name);
+    return wr;
+}
+
 export async function createWebResourcesAsync(sourcepath: string, publisher: string): Promise<Webresource[]> {
     return new Promise<Webresource[]>((resolve, reject) => {
 
@@ -51,12 +64,12 @@ export async function createWebResourcesAsync(sourcepath: string, publisher: str
             var wr = {
                 name: `${publisher}${file.split(sourcepath)[1]}`.split('\\').join('/'),
                 path: file,
-                content: content,                
+                content: content,
             } as Webresource
             wr.type = getFileType(wr.name);
             return wr;
         }).toArray();
-        
+
         resolve(resources);
     });
 

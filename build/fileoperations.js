@@ -28,8 +28,10 @@ function uploadFileAsync(file, baseurl, apiversion, accesstoken) {
                 "webresourcetype": file.type
             });
             req.end(function (res) {
-                if (res.error)
-                    throw new Error(res.error);
+                if (res.error) {
+                    console.log("Errror: " + res.body);
+                    reject(res.error);
+                }
                 resolve(true);
             });
         });

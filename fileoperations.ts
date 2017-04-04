@@ -22,7 +22,10 @@ export async function uploadFileAsync(file: Webresource, baseurl: string, apiver
         });
 
         req.end(function (res) {
-            if (res.error) throw new Error(res.error);
+            if (res.error) {
+                console.log("Errror: " + res.body);
+                reject(res.error);
+            }
             resolve(true);
         });
     });
@@ -86,5 +89,5 @@ export class Webresource {
     name: string;
     path: string;
     content: string;
-    type: FileType
+    webresourcetype: FileType
 }

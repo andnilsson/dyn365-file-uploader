@@ -1,9 +1,9 @@
 import { getExistingFileIdsAsync, uploadFileAsync, Webresource } from './fileoperations';
-import { isValidFile, createWebResourcesAsync } from './composeFile';
+import { isValidFile, createWebResourcesAsync, createSingleWebResource } from './composeFile';
 
 
 
-export { getExistingFileIdsAsync, uploadFileAsync, Webresource, isValidFile, createWebResourcesAsync }
+export { getExistingFileIdsAsync, uploadFileAsync, Webresource, isValidFile, createWebResourcesAsync, createSingleWebResource }
 
 
 

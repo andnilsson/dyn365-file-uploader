@@ -49,6 +49,19 @@ function getFileType(filename) {
     else
         return fileoperations_1.FileType.unknown;
 }
+function createSingleWebResource(filename, sourcepath, publisher) {
+    if (!isValidFile(filename))
+        return null;
+    var content = fs.readFileSync(filename, 'base64');
+    var wr = {
+        name: `${publisher}${filename.split(sourcepath)[1]}`.split('\\').join('/'),
+        path: filename,
+        content: content,
+    };
+    wr.webresourcetype = getFileType(wr.name);
+    return wr;
+}
+exports.createSingleWebResource = createSingleWebResource;
 function createWebResourcesAsync(sourcepath, publisher) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
