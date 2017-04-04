@@ -25,7 +25,7 @@ function uploadFileAsync(file, baseurl, apiversion, accesstoken) {
                 "content": file.content,
                 "name": file.name,
                 "displayname": file.name,
-                "webresourcetype": file.type
+                "webresourcetype": file.webresourcetype
             });
             req.end(function (res) {
                 if (res.error) {

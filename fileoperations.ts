@@ -18,7 +18,7 @@ export async function uploadFileAsync(file: Webresource, baseurl: string, apiver
             "content": file.content,
             "name": file.name,
             "displayname": file.name,
-            "webresourcetype": file.type
+            "webresourcetype": file.webresourcetype
         });
 
         req.end(function (res) {
