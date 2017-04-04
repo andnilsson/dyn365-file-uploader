@@ -23,21 +23,21 @@ export function isValidFile(filename: string): boolean {
 }
 
 function getFileType(filename: string): FileType {
-    if (filename.indexOf("htm") > -1)
+    if (filename.indexOf(".htm") > -1)
         return FileType.html;
-    else if (filename.indexOf("css") > -1)
+    else if (filename.indexOf(".css") > -1)
         return FileType.css;
-    else if (filename.indexOf("htm") > -1)
+    else if (filename.indexOf(".htm") > -1)
         return FileType.html;
-    else if (filename.indexOf("js") > -1)
-        return FileType.html;
-    else if (filename.indexOf("xml") > -1)
+    else if (filename.indexOf(".js") > -1)
         return FileType.js;
-    else if (filename.indexOf("png") > -1)
+    else if (filename.indexOf(".xml") > -1)
+        return FileType.xml;
+    else if (filename.indexOf(".png") > -1)
         return FileType.png;
-    else if (filename.indexOf("jpg") > -1)
+    else if (filename.indexOf(".jpg") > -1)
         return FileType.jpg;
-    else if (filename.indexOf("gif") > -1)
+    else if (filename.indexOf(".gif") > -1)
         return FileType.gif;
     else return FileType.unknown
 }
