@@ -1,7 +1,6 @@
 import { Webresource, FileType } from './fileoperations';
 import fs = require('fs');
 import * as en from 'linq';
-import tl = require('vsts-task-lib/task');
 
 const filesuffixes = [
     "htm",
@@ -57,7 +56,7 @@ export function createSingleWebResource(filename: string, sourcepath: string, pu
 export async function createWebResourcesAsync(sourcepath: string, publisher: string): Promise<Webresource[]> {
     return new Promise<Webresource[]>((resolve, reject) => {
 
-        var allFiles = en.from(tl.find(sourcepath) as [string]).where(f => isValidFile(f));
+        var allFiles = en.from(fs.readdirSync(sourcepath)).where(f => isValidFile(f));       
         var resources = allFiles.select((file) => {
             var content = fs.readFileSync(file, 'base64');
             var wr = {
