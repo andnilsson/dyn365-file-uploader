@@ -17,8 +17,7 @@ const filesuffixes = [
 
 export function isValidFile(filename: string): boolean {
     var parts = filename.split('.');
-    var value = filesuffixes.indexOf(parts[parts.length - 1]) > -1;
-    console.log(`is ${filename} valid file: ${value}`);
+    var value = filesuffixes.indexOf(parts[parts.length - 1]) > -1;    
     return value;
 }
 

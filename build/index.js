@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const fileoperations_1 = require("./fileoperations");
 exports.getExistingFileIdsAsync = fileoperations_1.getExistingFileIdsAsync;
 exports.uploadFileAsync = fileoperations_1.uploadFileAsync;

@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 const fileoperations_1 = require("./fileoperations");
 const fs = require("fs");
 const en = require("linq");
@@ -25,7 +26,6 @@ const filesuffixes = [
 function isValidFile(filename) {
     var parts = filename.split('.');
     var value = filesuffixes.indexOf(parts[parts.length - 1]) > -1;
-    console.log(`is ${filename} valid file: ${value}`);
     return value;
 }
 exports.isValidFile = isValidFile;

@@ -32,14 +32,12 @@ export async function uploadFileAsync(file: Webresource, baseurl: string, apiver
 }
 
 export async function getExistingFileIdsAsync(files: Webresource[], baseurl: string, apiversion: string, accesstoken: string): Promise<Webresource[]> {
-    return new Promise<Webresource[]>((resolve, reject) => {
-        console.log("Starting reteiving existing web resources");
+    return new Promise<Webresource[]>((resolve, reject) => {        
 
         if(files.length < 1){
             resolve([]);
             return;
         }
-
 
         var filter = files.map((file, index) => `contains(name, '${file.name}') or `).join('').slice(0, -4);
         var uri = `${baseurl}/api/data/v${apiversion}/webresourceset`;
@@ -58,7 +56,7 @@ export async function getExistingFileIdsAsync(files: Webresource[], baseurl: str
         req.send();
 
         req.end((res) => {
-            if (res.error) throw new Error(res.error);
+            if (res.error) reject(res.error);
             if (!res.body || !res.body.value) {
                 resolve(files);
                 return;

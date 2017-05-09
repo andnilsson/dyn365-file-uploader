@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 const unirest = require("unirest");
 const en = require("linq");
 function uploadFileAsync(file, baseurl, apiversion, accesstoken) {
@@ -41,7 +42,6 @@ exports.uploadFileAsync = uploadFileAsync;
 function getExistingFileIdsAsync(files, baseurl, apiversion, accesstoken) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
-            console.log("Starting reteiving existing web resources");
             if (files.length < 1) {
                 resolve([]);
                 return;
@@ -61,7 +61,7 @@ function getExistingFileIdsAsync(files, baseurl, apiversion, accesstoken) {
             req.send();
             req.end((res) => {
                 if (res.error)
-                    throw new Error(res.error);
+                    reject(res.error);
                 if (!res.body || !res.body.value) {
                     resolve(files);
                     return;
